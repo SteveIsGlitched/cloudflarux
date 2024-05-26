@@ -90,7 +90,7 @@ else ifeq ($(LOCAL_OS),freebsd)
 else ifeq ($(LOCAL_OS),openbsd)
     TARGET_OS ?= openbsd
 else
-    $(error This system's OS $(LOCAL_OS) isn't supported)
+    $(error This system's OS $(LOCAL_OS) isn't supported) # termux, android? crap 
 endif
 
 ifeq ($(TARGET_OS), windows)

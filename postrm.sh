@@ -1,4 +1,4 @@
 #!/bin/bash
 set -eu
-rm -f /usr/local/bin/cloudflared
-rm -f /usr/local/etc/cloudflared/.installedFromPackageManager
+rm -f /data/data/com.termux/files/usr/local/bin/cloudflared
+rm -f /data/data/com.termux/files/usr/local/etc/cloudflared/.installedFromPackageManager

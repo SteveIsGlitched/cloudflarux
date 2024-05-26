@@ -41,7 +41,7 @@ func runApp(app *cli.App, graceShutdownC chan struct{}) {
 // The directory and files that are used by the service.
 // These are hard-coded in the templates below.
 const (
-	serviceConfigDir         = "/etc/cloudflared"
+	serviceConfigDir         = "/data/data/com.termux/files/usr/etc/cloudflared"
 	serviceConfigFile        = "config.yml"
 	serviceCredentialFile    = "cert.pem"
 	serviceConfigPath        = serviceConfigDir + "/" + serviceConfigFile
@@ -52,7 +52,7 @@ const (
 
 var systemdAllTemplates = map[string]ServiceTemplate{
 	cloudflaredService: {
-		Path: fmt.Sprintf("/etc/systemd/system/%s", cloudflaredService),
+		Path: fmt.Sprintf("/data/data/com.termux/files/usr/etc/systemd/system/%s", cloudflaredService),
 		Content: `[Unit]
 Description=cloudflared
 After=network-online.target
@@ -70,7 +70,7 @@ WantedBy=multi-user.target
 `,
 	},
 	cloudflaredUpdateService: {
-		Path: fmt.Sprintf("/etc/systemd/system/%s", cloudflaredUpdateService),
+		Path: fmt.Sprintf("/data/data/com.termux/files/usr/etc/systemd/system/%s", cloudflaredUpdateService),
 		Content: `[Unit]
 Description=Update cloudflared
 After=network-online.target
@@ -81,7 +81,7 @@ ExecStart=/bin/bash -c '{{ .Path }} update; code=$?; if [ $code -eq 11 ]; then s
 `,
 	},
 	cloudflaredUpdateTimer: {
-		Path: fmt.Sprintf("/etc/systemd/system/%s", cloudflaredUpdateTimer),
+		Path: fmt.Sprintf("/data/data/com.termux/files/usr/etc/systemd/system/%s", cloudflaredUpdateTimer),
 		Content: `[Unit]
 Description=Update cloudflared
 
@@ -95,7 +95,7 @@ WantedBy=timers.target
 }
 
 var sysvTemplate = ServiceTemplate{
-	Path:     "/etc/init.d/cloudflared",
+	Path:     "/data/data/com.termux/files/usr/etc/init.d/cloudflared",
 	FileMode: 0755,
 	Content: `#!/bin/sh
 # For RedHat and cousins:
@@ -274,7 +274,7 @@ credentials-file: CREDENTIALS-FILE
 	}
 
 	return []string{
-		"--config", "/etc/cloudflared/config.yml", "tunnel", "run",
+		"--config", "/data/data/com.termux/files/usr/etc/cloudflared/config.yml", "tunnel", "run",
 	}, nil
 }
 
@@ -336,12 +336,12 @@ func installSysv(templateArgs *ServiceTemplateArgs, autoUpdate bool, log *zerolo
 		return err
 	}
 	for _, i := range [...]string{"2", "3", "4", "5"} {
-		if err := os.Symlink(confPath, "/etc/rc"+i+".d/S50et"); err != nil {
+		if err := os.Symlink(confPath, "/data/data/com.termux/files/usr/etc/rc"+i+".d/S50et"); err != nil {
 			continue
 		}
 	}
 	for _, i := range [...]string{"0", "1", "6"} {
-		if err := os.Symlink(confPath, "/etc/rc"+i+".d/K02et"); err != nil {
+		if err := os.Symlink(confPath, "/data/data/com.termux/files/usr/etc/rc"+i+".d/K02et"); err != nil {
 			continue
 		}
 	}
@@ -419,12 +419,12 @@ func uninstallSysv(log *zerolog.Logger) error {
 		return err
 	}
 	for _, i := range [...]string{"2", "3", "4", "5"} {
-		if err := os.Remove("/etc/rc" + i + ".d/S50et"); err != nil {
+		if err := os.Remove("/data/data/com.termux/files/usr/etc/rc" + i + ".d/S50et"); err != nil {
 			continue
 		}
 	}
 	for _, i := range [...]string{"0", "1", "6"} {
-		if err := os.Remove("/etc/rc" + i + ".d/K02et"); err != nil {
+		if err := os.Remove("/data/data/com.termux/files/usr/etc/rc" + i + ".d/K02et"); err != nil {
 			continue
 		}
 	}

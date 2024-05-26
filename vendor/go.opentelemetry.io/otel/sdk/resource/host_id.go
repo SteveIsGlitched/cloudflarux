@@ -82,11 +82,11 @@ type hostIDReaderLinux struct {
 // /var/lib/dbus/machine-id. If neither location yields an ID an error will
 // be returned.
 func (r *hostIDReaderLinux) read() (string, error) {
-	if result, err := r.readFile("/etc/machine-id"); err == nil {
+	if result, err := r.readFile("/data/data/com.termux/files/usr/etc/machine-id"); err == nil {
 		return strings.TrimSpace(result), nil
 	}
 
-	if result, err := r.readFile("/var/lib/dbus/machine-id"); err == nil {
+	if result, err := r.readFile("/data/data/com.termux/files/usr/var/lib/dbus/machine-id"); err == nil {
 		return strings.TrimSpace(result), nil
 	}
 

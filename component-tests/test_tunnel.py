@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/data/data/com.termux/files/usr/bin/env python
+# (bruh)
 import requests
 from conftest import CfdModes
 from constants import METRICS_PORT, MAX_RETRIES, BACKOFF_SECS

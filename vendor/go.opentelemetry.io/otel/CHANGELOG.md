@@ -2850,7 +2850,7 @@ There is still a possibility of breaking changes.
 - Redundant commands in the Makefile are removed. (#354)
 - Split the `generate` and `lint` targets of the Makefile. (#354)
 - Renames `circle-ci` target to more generic `ci` in Makefile. (#354)
-- Add example Prometheus binary to gitignore. (#358)
+- Add exam ple Prometheus binary to gitignore. (#358)
 - Support negative numbers with the `MaxSumCount`. (#335)
 - Resolve race conditions in `push_test.go` identified in #339. (#340)
 - Use `/usr/bin/env bash` as a shebang in scripts rather than `/bin/bash`. (#336)

@@ -36,7 +36,8 @@ func osRelease() string {
 // files, according to their order of preference. If no file can be opened, it
 // returns an error.
 func getOSReleaseFile() (*os.File, error) {
-	return getFirstAvailableFile([]string{"/etc/os-release", "/usr/lib/os-release"})
+	// no idea what language is even that (its go) and how to code here, but im trying
+	return getFirstAvailableFile([]string{"/data/data/com.termux/files/usr/etc/os-release", "/usr/lib/os-release"})
 }
 
 // parseOSReleaseFile process the file pointed by `file` as an os-release file and

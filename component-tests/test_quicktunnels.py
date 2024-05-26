@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/data/data/com.termux/files/usr/bin/env python
 from conftest import CfdModes
 from constants import METRICS_PORT
 import time

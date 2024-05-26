@@ -4,7 +4,7 @@ set -exo pipefail
 
 if [[ "$(uname)" != "Darwin" ]] ; then
     echo "This should be run on macOS"
-    exit 1
+    exit 1 # really? whats up? linux?
 fi
 
 go version

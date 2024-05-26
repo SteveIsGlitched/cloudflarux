@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/data/data/com.termux/files/usr/bin/env bash
 
 # This script serves as an example to demonstrate how to generate the gRPC-Go
 # interface and the related messages from .proto file.

@@ -25,10 +25,10 @@ var (
 	DefaultConfigFiles = []string{"config.yml", "config.yaml"}
 
 	// DefaultUnixConfigLocation is the primary location to find a config file
-	DefaultUnixConfigLocation = "/usr/local/etc/cloudflared"
+	DefaultUnixConfigLocation = "/data/data/com.termux/files/usr/local/etc/cloudflared"
 
 	// DefaultUnixLogLocation is the primary location to find log files
-	DefaultUnixLogLocation = "/var/log/cloudflared"
+	DefaultUnixLogLocation = "/data/data/com.termux/files/usr/var/log/cloudflared"
 
 	// Launchd doesn't set root env variables, so there is default
 	// Windows default config dir was ~/cloudflare-warp in documentation; let's keep it compatible

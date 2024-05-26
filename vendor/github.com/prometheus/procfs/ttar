@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/data/data/com.termux/files/usr/bin/env bash
 
 # Purpose: plain text tar format
 # Limitations: - only suitable for text files, directories, and symlinks
@@ -37,7 +37,7 @@ ARG_STRING="$*"
 USE_PYTHON=0
 
 PYTHON_CREATE_FILTER=$(cat << 'PCF'
-#!/usr/bin/env python
+#!/data/data/com.termux/files/usr/bin/env python
 
 import re
 import sys
@@ -51,7 +51,7 @@ PCF
 )
 
 PYTHON_EXTRACT_FILTER=$(cat << 'PEF'
-#!/usr/bin/env python
+#!/data/data/com.termux/files/usr/bin/env python
 
 import re
 import sys

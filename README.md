@@ -15,6 +15,6 @@ This is a full Cloudflare Tunnel client port to Termux, meaning you can use stat
 git clone https://github.com/SteveIsGlitched/cloudflarux --depth=1
 cd cloudflared
 
-make cloudflared
+make cloudflarux
 install cloudflared /data/data/com.termux/files/usr/bin
 ```

@@ -79,8 +79,8 @@ else
 endif
 
 LOCAL_OS ?= $(shell go env GOOS)
-ifeq ($(LOCAL_OS),linux)
-    TARGET_OS ?= linux
+ifeq ($(LOCAL_OS),android)
+    TARGET_OS ?= android
 else ifeq ($(LOCAL_OS),darwin)
     TARGET_OS ?= darwin
 else ifeq ($(LOCAL_OS),windows)
@@ -129,7 +129,7 @@ clean:
 cloudflared:
 ifeq ($(FIPS), true)
 	$(info Building cloudflared with go-fips)
-	cp -f fips/fips.go.linux-amd64 cmd/cloudflared/fips.go
+	cp -f fips/fips.go.android-amd64 cmd/cloudflared/fips.go
 endif
 	GOOS=$(TARGET_OS) GOARCH=$(TARGET_ARCH) $(ARM_COMMAND) go build -mod=vendor $(GO_BUILD_TAGS) $(LDFLAGS) $(IMPORT_PATH)/cmd/cloudflared
 ifeq ($(FIPS), true)
@@ -231,8 +231,8 @@ github-release: cloudflared
 github-release-built-pkgs:
 	python3 github_release.py --path $(PWD)/built_artifacts --release-version $(VERSION)
 
-.PHONY: release-pkgs-linux
-release-pkgs-linux:
+.PHONY: release-pkgs-android
+release-pkgs-android:
 	python3 ./release_pkgs.py
 
 .PHONY: github-message
